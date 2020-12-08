@@ -24,8 +24,8 @@ client.background       #ffffff
 
 
 #Startup
-exec_always --no-startup-id /home/jim/.config/polybar/launch.sh
-exec --no-startup-id picom --experimental-backends --config=/home/jim/.config/picom.conf
+exec_always --no-startup-id -/.config/polybar/launch.sh
+exec --no-startup-id picom --experimental-backends --config=~/.config/picom.conf
 #exec --no-startup-id qbittorrent
 exec  kitty --name terminal
 exec  kitty --name scratchranger ranger
