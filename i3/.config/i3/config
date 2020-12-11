@@ -25,7 +25,7 @@ client.background       #ffffff
 
 #Startup
 exec_always --no-startup-id -/.config/polybar/launch.sh
-exec --no-startup-id picom --experimental-backends --config=~/.config/picom.conf
+exec --no-startup-id picom --experimental-backends
 #exec --no-startup-id qbittorrent
 exec  kitty --name terminal
 exec  kitty --name scratchranger ranger
@@ -41,7 +41,7 @@ assign [title="Steam"] $wksp9
 assign [instance="todo"] $wksp11
 for_window [instance="scratchranger"] move window to scratchpad
 #Disable borders
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 5
 #Music
 #for_window [class="(?i)retroarch"] fullscreen enable
 #Disable Mouse Focus
