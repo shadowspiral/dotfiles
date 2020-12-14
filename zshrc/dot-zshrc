@@ -124,5 +124,8 @@ alias roficonfig="nvim ~/.config/rofi/"
 alias ls="colorls -a"
 alias cat="bat"
 alias todo="nvim ~/.config/todo/.todo.md"
+
+export SUDO_EDITOR=nvim
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

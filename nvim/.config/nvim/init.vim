@@ -57,7 +57,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'flazz/vim-colorschemes'
 Plug 'felixhummel/setcolors.vim'
 Plug 'Shougo/deoplete.nvim'
-Plug 'lambdalisue/suda.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'neomake/neomake'
 Plug 'sbdchd/neoformat'
@@ -246,7 +245,6 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
-command SW SudaWrite
 
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
