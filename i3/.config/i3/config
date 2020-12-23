@@ -1,6 +1,6 @@
 
 ########################
-# i3 config file (v6.5)#
+# i3 config file (v8)#
 ########################
 
 #Modfier key (set to Supr)
@@ -25,7 +25,7 @@ client.background       #ffffff
 
 #Startup
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec --no-startup-id picom --experimental-backends
+exec picom --experimental-backends
 #exec --no-startup-id qbittorrent
 exec  kitty --name terminal
 exec  kitty --name scratchranger ranger
@@ -52,7 +52,7 @@ focus_follows_mouse no
 bindsym --release button2 kill
 
 #Gaps
-set $dgaps_in 5
+set $dgaps_in 10
 set $dgaps_out 5
 set $dgaps_top 38
 gaps inner $dgaps_in
@@ -68,14 +68,13 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+Shift+q kill
 
 # start rofi in dmenu mode
-bindsym $mod+d exec ~/.config/rofi/launchers/launcher.sh
+bindsym $mod+d exec ~/.config/rofi/launchers-ribbon/launcher.sh
 
 #Firefox launch
 bindsym $mod+b exec firefox
 #PCManFM launch
 bindsym $mod+p exec pcmanfm
-#Ytmusic launch
-bindsym $mod+y exec ytmdesktop
+
 ####################
 # Windows settings #
 ####################

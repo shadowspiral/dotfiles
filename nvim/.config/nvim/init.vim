@@ -61,6 +61,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'neomake/neomake'
 Plug 'sbdchd/neoformat'
 Plug 'aserebryakov/vim-todo-lists'
+Plug 'tpope/vim-surround'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -464,7 +465,8 @@ nnoremap <Leader>o :.Gbrowse<CR>
 if filereadable(expand("~/.config/nvim/local_init.vim"))
   source ~/.config/nvim/local_init.vim
 endif
-
+let g:indentLine_fileTypeExclude = ['tex']
+au Filetype tex setlocal conceallevel=0
 let g:tex_conceal = " "
 
 " Vimlatex
