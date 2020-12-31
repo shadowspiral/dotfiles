@@ -26,24 +26,20 @@ client.background       #ffffff
 #Startup
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec picom --experimental-backends
-#exec --no-startup-id qbittorrent
 exec  kitty --name terminal
-exec  kitty --name scratchranger ranger
 exec  kitty --name todo nvim ~/.config/todo/.todo.md
 #Assign Windows to Workspaces
 assign [class="firefox"] $wksp3
 assign [class="Telegram"] $wksp1
 assign [class="qtwaw"]  $wksp1
 assign [instance="terminal"] $wksp2
-assign [class = "Transmission-gtk"] $wksp8
 assign [class="Steam"] $wksp9
 assign [title="Steam"] $wksp9
 assign [instance="todo"] $wksp11
-for_window [instance="scratchranger"] move window to scratchpad
+for_window [instance="ranger"] floating enable
+for_window [instance="todo"] move window scratchpad
 #Disable borders
 for_window [class="^.*"] border pixel 5
-#Music
-#for_window [class="(?i)retroarch"] fullscreen enable
 #Disable Mouse Focus
 focus_follows_mouse no
 
@@ -61,6 +57,10 @@ gaps top $dgaps_top
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+################
+# Applications #
+################
+
 # start a terminal
 bindsym $mod+Return exec $terminal
 
@@ -74,16 +74,29 @@ bindsym $mod+d exec ~/.config/rofi/launchers-ribbon/launcher.sh
 bindsym $mod+b exec firefox
 #PCManFM launch
 bindsym $mod+p exec pcmanfm
+#ranger launch
+bindsym $mod+Shift+p exec kitty --name ranger ranger
+# Show the todo scratchpad window
+bindsym $mod+t [instance="todo"] scratchpad show
+# emptywindows
+bindsym $mod+Shift+z exec feh ~/Pictures/Wallpapers/.current-wall.jpg
+
+
+#Scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+x move scratchpad
+bindsym $mod+x       scratchpad show
+
 
 ####################
 # Windows settings #
 ####################
 
 # Change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+ntilde focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # Change focus cursor keys:
 bindsym $mod+Left focus left
@@ -92,10 +105,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # Move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+ntilde move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # Move focused window with cursor keys:
 bindsym $mod+Shift+Left move left
@@ -104,7 +117,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+g split h
 
 # Split in vertical orientation
 bindsym $mod+v split v
@@ -165,7 +178,7 @@ bindsym $mod+7 workspace $wksp7
 bindsym $mod+8 workspace $wksp8
 bindsym $mod+9 workspace $wksp9
 bindsym $mod+0 workspace $wksp10
-bindsym $mod+T workspace $wksp11
+bindsym $mod+minus workspace $wksp11
 #Workspace with keypad
 #bindsym $mod+KP_1 workspace $wksp1
 #bindsym $mod+KP_2 workspace $wksp2
@@ -179,13 +192,8 @@ bindsym $mod+T workspace $wksp11
 #bindsym $mod+KP_0 workspace $wksp10
 #
 #bindsym $mod+Control+Tab move workspace to output right
-#
-#Retromode
-bindsym $mod+G workspace $wksp11; exec --no-startup-id retroarch
 
 # Move between workspaces
-bindsym $mod+Mod1+Right  workspace next
-bindsym $mod+Mod1+Left   workspace prev
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+N move workspace to eDP
 bindsym $mod+Control+Shift+N move workspace to HDMI-A-0
@@ -200,11 +208,7 @@ bindsym $mod+Shift+7 move container to workspace $wksp7
 bindsym $mod+Shift+8 move container to workspace $wksp8
 bindsym $mod+Shift+9 move container to workspace $wksp9
 bindsym $mod+Shift+0 move container to workspace $wksp10
-bindsym $mod+Shift+T move container to workspace $wksp11
-
-
-# Music mode
-
+bindsym $mod+Shift+minus move container to workspace $wksp11
 ##################
 # Extra settings #
 ##################
@@ -214,18 +218,8 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# emptywindows
-bindsym $mod+Shift+z exec feh ~/Pictures/Wallpapers/.current-wall.jpg
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+p exec betterlockscreen -l blur
-
-#Scratchpad
-# Make the currently focused window a scratchpad
-bindsym $mod+Shift+x move scratchpad
-
-# Show the first scratchpad window
-bindsym $mod+x scratchpad show
+# lock (logs you out of your X session)
+#bindsym $mod+Shift+p exec betterlockscreen -l blur
 
 
 # Resize window mode (you can also use the mouse for that)
@@ -236,10 +230,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym ntilde resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
